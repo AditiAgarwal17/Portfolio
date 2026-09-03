@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Awards from './components/Awards'
 import Education from './components/Education'
+import Contact from './components/Contact'
 
 export default function App() {
   return (
@@ -19,8 +20,9 @@ export default function App() {
         <Projects />
         <Awards />
         <Education />
+        <Contact />
       </main>
-      <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-white/5 mt-20">
+      <footer className="max-w-4xl mx-auto px-6 py-8 border-t border-white/5 mt-8">
         <p className="text-center text-[#444] text-sm font-mono">
           built by aditi · {new Date().getFullYear()}
         </p>

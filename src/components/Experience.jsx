@@ -1,3 +1,5 @@
+import { useScrollReveal } from '../hooks/useScrollReveal'
+
 const roles = [
   {
     title: 'Software Engineer – SAP Datasphere',
@@ -58,28 +60,31 @@ const roles = [
 ]
 
 export default function Experience() {
+  const ref = useScrollReveal()
   return (
     <section id="experience" className="py-16">
-      <h2 className="text-3xl font-bold text-[#f0f0f0] mb-8">Experience</h2>
-      <div className="space-y-4">
-        {roles.map(({ title, company, period, tech, bullets }) => (
-          <div key={title} className="border border-white/10 p-6 md:p-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
-              <h3 className="text-base font-semibold text-[#f0f0f0]">{title}</h3>
-              <span className="text-[#64ffda] font-mono text-xs shrink-0 md:ml-4">{period}</span>
+      <div ref={ref} className="reveal">
+        <h2 className="text-3xl font-bold text-[#f0f0f0] mb-8">Experience</h2>
+        <div className="space-y-4">
+          {roles.map(({ title, company, period, tech, bullets }) => (
+            <div key={title} className="border border-white/10 p-6 md:p-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
+                <h3 className="text-base font-semibold text-[#f0f0f0]">{title}</h3>
+                <span className="text-[#64ffda] font-mono text-xs shrink-0 md:ml-4">{period}</span>
+              </div>
+              <p className="text-[#9ca3af] text-sm mb-1">{company}</p>
+              <p className="text-[#6b7280] font-mono text-xs mb-5">{tech}</p>
+              <ul className="space-y-2.5">
+                {bullets.map((b, i) => (
+                  <li key={i} className="flex gap-3 text-sm text-[#9ca3af] leading-relaxed">
+                    <span className="text-[#64ffda] mt-0.5 shrink-0">▸</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-[#9ca3af] text-sm mb-1">{company}</p>
-            <p className="text-[#444] font-mono text-xs mb-5">{tech}</p>
-            <ul className="space-y-2.5">
-              {bullets.map((b, i) => (
-                <li key={i} className="flex gap-3 text-sm text-[#9ca3af] leading-relaxed">
-                  <span className="text-[#64ffda] mt-0.5 shrink-0">▸</span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )

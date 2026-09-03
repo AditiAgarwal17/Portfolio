@@ -1,3 +1,5 @@
+import { useScrollReveal } from '../hooks/useScrollReveal'
+
 const skills = [
   { category: 'Languages', items: ['TypeScript', 'Java', 'JavaScript', 'Python', 'SQL'] },
   { category: 'Backend', items: ['Node.js', 'Express.js', 'Spring Boot', 'REST APIs', 'Microservices'] },
@@ -11,22 +13,25 @@ const skills = [
 ]
 
 export default function Skills() {
+  const ref = useScrollReveal()
   return (
     <section id="skills" className="py-16">
-      <h2 className="text-3xl font-bold text-[#f0f0f0] mb-8">Tech Stack</h2>
-      <div className="grid gap-5">
-        {skills.map(({ category, items }) => (
-          <div key={category} className="flex gap-6 items-start">
-            <span className="text-[#64ffda] font-mono text-xs w-28 shrink-0 pt-1">{category}</span>
-            <div className="flex flex-wrap gap-2">
-              {items.map(item => (
-                <span key={item} className="px-3 py-1 bg-white/5 border border-white/10 text-[#9ca3af] text-xs font-mono">
-                  {item}
-                </span>
-              ))}
+      <div ref={ref} className="reveal">
+        <h2 className="text-3xl font-bold text-[#f0f0f0] mb-8">Tech Stack</h2>
+        <div className="grid gap-5">
+          {skills.map(({ category, items }) => (
+            <div key={category} className="flex gap-6 items-start">
+              <span className="text-[#64ffda] font-mono text-xs w-28 shrink-0 pt-1">{category}</span>
+              <div className="flex flex-wrap gap-2">
+                {items.map(item => (
+                  <span key={item} className="px-3 py-1 bg-white/5 border border-white/10 text-[#9ca3af] text-xs font-mono">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )
